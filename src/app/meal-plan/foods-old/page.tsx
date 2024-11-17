@@ -83,6 +83,7 @@ import {
   where,
 } from "firebase/firestore";
 import { useAuth } from "@/lib/authContext";
+import Header from "@/components/Header";
 
 interface SearchResult {
   food_name: string;
@@ -807,6 +808,8 @@ export default function FoodsEditor() {
   };
 
   return (
+    <div>
+    <Header />
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">Food Editor</h1>
 
@@ -2221,6 +2224,7 @@ export default function FoodsEditor() {
           Save to Browser
         </Button>
       </div>
+    </div>
     </div>
   );
 }

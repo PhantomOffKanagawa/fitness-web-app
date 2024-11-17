@@ -68,7 +68,7 @@ export default function MealPlanHome() {
 
         {/* Quick Actions */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Link href="/meal-plan/generate">
+          <Link href="/meal-plan/generate-old">
             <div className="card bg-primary text-primary-content hover:shadow-lg transition-all">
               <div className="card-body">
                 <ChefHat className="w-8 h-8 mb-2" />
@@ -81,7 +81,7 @@ export default function MealPlanHome() {
             </div>
           </Link>
 
-          <Link href="/meal-plan/foods">
+          <Link href="/meal-plan/foods-old">
             <div className="card bg-secondary text-secondary-content hover:shadow-lg transition-all">
               <div className="card-body">
                 <ListChecks className="w-8 h-8 mb-2" />

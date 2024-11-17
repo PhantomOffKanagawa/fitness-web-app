@@ -118,7 +118,7 @@ const Homepage = () => {
 
         {/* Support Section */}
         <Link
-          href="/"
+          href="/meal-plan"
           className="bg-accent p-6 rounded-2xl shadow-lg flex items-center space-x-4 text-accent-content hover:bg-accent-focus transition duration-300 ease-in-out transform hover:scale-105"
         >
           <CookingPot className="w-16 h-16" />

@@ -78,6 +78,7 @@ import {
   where,
 } from "firebase/firestore";
 import { useAuth } from "@/lib/authContext";
+import Header from "@/components/Header";
 
 type FirebaseFood = FoodItem & {
   userId: string;
@@ -1063,6 +1064,7 @@ const saveRangesToFirebase = async (newRanges: typeof ranges) => {
     <TooltipProvider>
       <DragDropContext onDragEnd={onDragEnd}>
         <script async src="/js/solver.js"></script>
+            <Header />
           <div className="container mx-auto px-4 py-8 pb-20 min-h-screen">
             <h1 className="text-3xl font-bold mb-6">
               Enhanced Enhanced Meal Planner
