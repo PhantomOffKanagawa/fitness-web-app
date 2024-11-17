@@ -1,16 +1,25 @@
 "use client";
 
-import { Activity, Calendar, Star, Dumbbell, MoveUpRight, Carrot, CookingPot } from 'lucide-react';
+import {
+  Activity,
+  Calendar,
+  Star,
+  Dumbbell,
+  MoveUpRight,
+  Carrot,
+  CookingPot,
+} from "lucide-react";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { themeChange } from "theme-change";
 import { useAuth } from "@/lib/authContext";
 
-
 const Homepage = () => {
   const { authUser, loading, logout } = useAuth();
   //   const router = useRouter();
+
+  themeChange(false);
 
   useEffect(() => {
     // if (!authUser) router.push("/");
@@ -20,59 +29,72 @@ const Homepage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-base-100">
+    <div className="min-h-screen bg-base-100 pb-12">
       {/* Custom Header */}
       <header className="flex justify-between items-center p-4">
-      <Link href="/" className="text-accent text-4xl font-bold flex items-center space-x-2">
-        <Dumbbell className='w-8 h-8' />
-        <span>Workout Web App</span>
-      </Link>
-      <div className="flex items-center space-x-4 text-accent text-lg ms-20 me-auto brightness-75">
-      <Link href="/about">
-        <span>About</span>
-      </Link>
-      <Link href="/meal-plan">
-        <span>Meal Planner</span>
-      </Link>
-      </div>
-      <div className="flex items-center space-x-4">
-        {!authUser ? (
-          <div className='flex items-center space-x-2'>
-          <Link href="/auth">
-            <div className="p-4 bg-primary text-primary-content rounded-full">
-              Join The Buzz Word
-            </div>
+        <Link
+          href="/"
+          className="text-accent text-4xl font-bold flex items-center space-x-2"
+        >
+          <Dumbbell className="w-8 h-8" />
+          <span>Workout Web App</span>
+        </Link>
+        <div className="flex items-center space-x-4 text-accent text-lg ms-20 me-auto brightness-75">
+          <Link href="/about">
+            <span>About</span>
           </Link>
-          <Link href="/auth">
-            <div className="p-4 bg-primary text-primary-content rounded-full">
-              <MoveUpRight className="w-8 h-8" />
-            </div>
+          <Link href="/meal-plan">
+            <span>Meal Planner</span>
           </Link>
-          </div>
-        ) : (
-          <button
-            className="p-2 bg-secondary text-secondary-content rounded"
-            onClick={() => {
-              logout();
-              console.log("Logging out...");
-            }}
-          >
-            Logout
-          </button>
-        )}
-      </div>
-    </header>
+          <Link href="/meal-plan">
+            <span>Schedule Workouts</span>
+          </Link>
+        </div>
+        <div className="flex items-center space-x-4">
+          {!authUser ? (
+            <div className="flex items-center space-x-2">
+              <Link href="/auth">
+                <div className="p-4 bg-primary text-primary-content rounded-full">
+                  Join The Buzz Word
+                </div>
+              </Link>
+              <Link href="/auth">
+                <div className="p-4 bg-primary text-primary-content rounded-full">
+                  <MoveUpRight className="w-8 h-8" />
+                </div>
+              </Link>
+            </div>
+          ) : (
+            <button
+              className="p-2 bg-secondary text-secondary-content rounded"
+              onClick={() => {
+                logout();
+                console.log("Logging out...");
+              }}
+            >
+              Logout
+            </button>
+          )}
+        </div>
+      </header>
       {/* Main Content Grid */}
       <div className="max-w-7xl mx-auto p-8 grid grid-cols-2 gap-6">
         {/* Hero Section */}
         <div className="bg-primary text-primary-content p-8 rounded-2xl shadow-sm">
           <div className="flex items-center space-x-2 mb-4">
             <Activity className="h-5 w-5" />
-            <span className="text-sm font-semibold">FITNESS TRACKER — 2024</span>
+            <span className="text-sm font-semibold">
+              FITNESS TRACKER — 2024
+            </span>
           </div>
           <h1 className="text-5xl font-bold leading-tight mb-6">
-            EVENTUALLY<br />
-            TRACK YOUR<br />PROGRESS,<br />ACHIEVE MORE
+            EVENTUALLY
+            <br />
+            TRACK YOUR
+            <br />
+            PROGRESS,
+            <br />
+            ACHIEVE MORE
           </h1>
           <Link href="/" className="btn btn-secondary ghost">
             START YOUR JOURNEY
@@ -84,14 +106,22 @@ const Homepage = () => {
         </div>
 
         {/* Stats Card */}
-        <Link href="/scheduler" className="bg-gradient-to-br from-primary to-secondary p-8 rounded-2xl text-secondary-content flex flex-col justify-end transition duration-300 ease-in-out transform hover:scale-105">
+        <Link
+          href="/scheduler"
+          className="bg-gradient-to-br from-primary to-secondary p-8 rounded-2xl text-secondary-content flex flex-col justify-end transition duration-300 ease-in-out transform hover:scale-105"
+        >
           <h2 className="text-2xl font-bold mb-2">TRAIN ON YOUR SCHEDULE</h2>
-          <p className="">Flexible workout plans that adapt to your lifestyle</p>
+          <p className="">
+            Flexible workout plans that adapt to your lifestyle
+          </p>
         </Link>
 
         {/* Support Section */}
-        <Link href="/" className="bg-accent p-6 rounded-2xl shadow-lg flex items-center space-x-4 text-accent-content hover:bg-accent-focus transition duration-300 ease-in-out transform hover:scale-105">
-          <CookingPot className="w-16 h-16"/>
+        <Link
+          href="/"
+          className="bg-accent p-6 rounded-2xl shadow-lg flex items-center space-x-4 text-accent-content hover:bg-accent-focus transition duration-300 ease-in-out transform hover:scale-105"
+        >
+          <CookingPot className="w-16 h-16" />
           <div>
             <p className="text-sm font-medium">Meal Plan Generation</p>
             <h3 className="text-xl font-bold">NOT COMPLETED</h3>
@@ -105,18 +135,26 @@ const Homepage = () => {
             <span className="text-4xl font-bold">Another Feature</span>
           </div>
           <div className="flex flex-wrap gap-2">
-            {['Meal Planning', 'Workout Tracking', 'Progress Stats'].map((feature) => (
-              <span key={feature} className="px-4 py-2 bg-secondary text-secondary-content rounded-full text-sm">
-                {feature}
-              </span>
-            ))}
+            {["Meal Planning", "Workout Tracking", "Progress Stats"].map(
+              (feature) => (
+                <span
+                  key={feature}
+                  className="px-4 py-2 bg-secondary text-secondary-content rounded-full text-sm"
+                >
+                  {feature}
+                </span>
+              )
+            )}
           </div>
         </div>
       </div>
 
       {/* Footer */}
-      <footer className="bg-base-300 p-4 text-center fixed bottom-0 w-full">
-        <select data-choose-theme className="p-2 rounded text-primary absolute bottom-[50%] right-2 translate-y-[50%]">
+      <footer className="bg-base-300 p-4 text-center absolute  w-full">
+        <select
+          data-choose-theme
+          className="p-2 rounded text-primary absolute bottom-[50%] right-2 translate-y-[50%]"
+        >
           <option value="light">Light Mode</option>
           <option value="dark">Dark Mode</option>
           <option value="cupcake">Cupcake</option>
@@ -151,9 +189,7 @@ const Homepage = () => {
           <option value="sunset">Sunset</option>
           <option value="">System Default</option>
         </select>
-        <p className="text-sm text-gray-600">
-          2024 Workout Web App.
-        </p>
+        <p className="text-sm text-gray-600">2024 Workout Web App.</p>
       </footer>
     </div>
   );

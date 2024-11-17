@@ -11,7 +11,8 @@ const Header = () => {
   const { authUser, loading, logout } = useAuth();
   //   const router = useRouter();
 
-  useEffect(() => {
+    themeChange(false);
+    useEffect(() => {
     // if (!authUser) router.push("/");
 
     themeChange(false);
