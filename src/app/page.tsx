@@ -71,6 +71,7 @@ const Homepage = () => {
             <span className="text-sm font-semibold">FITNESS TRACKER — 2024</span>
           </div>
           <h1 className="text-5xl font-bold leading-tight mb-6">
+            EVENTUALLY<br />
             TRACK YOUR<br />PROGRESS,<br />ACHIEVE MORE
           </h1>
           <Link href="/" className="btn btn-secondary ghost">
@@ -83,16 +84,17 @@ const Homepage = () => {
         </div>
 
         {/* Stats Card */}
-        <div className="bg-gradient-to-br from-primary to-secondary p-8 rounded-2xl text-secondary-content flex flex-col justify-end">
+        <Link href="/scheduler" className="bg-gradient-to-br from-primary to-secondary p-8 rounded-2xl text-secondary-content flex flex-col justify-end transition duration-300 ease-in-out transform hover:scale-105">
           <h2 className="text-2xl font-bold mb-2">TRAIN ON YOUR SCHEDULE</h2>
           <p className="">Flexible workout plans that adapt to your lifestyle</p>
-        </div>
+        </Link>
 
         {/* Support Section */}
         <Link href="/" className="bg-accent p-6 rounded-2xl shadow-lg flex items-center space-x-4 text-accent-content hover:bg-accent-focus transition duration-300 ease-in-out transform hover:scale-105">
           <CookingPot className="w-16 h-16"/>
           <div>
             <p className="text-sm font-medium">Meal Plan Generation</p>
+            <h3 className="text-xl font-bold">NOT COMPLETED</h3>
             <h3 className="text-xl font-bold">MINIMAL COST, MAXIMAL FIT</h3>
           </div>
         </Link>

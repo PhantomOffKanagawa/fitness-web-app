@@ -19,12 +19,12 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="flex justify-between items-center p-4 bg-base-300 dark:bg-base-800">
-      <Link href="/" className="text-primary text-xl font-bold flex items-center space-x-2">
+    <header className="flex justify-between items-center p-4 bg-base-300 text-base-content">
+      <Link href="/" className="text-accent text-xl font-bold flex items-center space-x-2">
         <Dumbbell />
         <span>Workout Web App</span>
       </Link>
-      <h2 className="text-primary">
+      <h2 className="text-accent">
         {loading ? "Loading..." : authUser ? `Welcome, ${authUser.email}` : ""}
       </h2>
       <div className="flex items-center space-x-4">
