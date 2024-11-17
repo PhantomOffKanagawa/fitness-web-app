@@ -1,101 +1,160 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { Activity, Calendar, Star, Dumbbell, MoveUpRight, Carrot, CookingPot } from 'lucide-react';
+
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { themeChange } from "theme-change";
+import { useAuth } from "@/lib/authContext";
+
+
+const Homepage = () => {
+  const { authUser, loading, logout } = useAuth();
+  //   const router = useRouter();
+
+  useEffect(() => {
+    // if (!authUser) router.push("/");
+
+    themeChange(false);
+    // 👆 false parameter is required for react project
+  }, []);
+
   return (
-    <div className="bg-primary grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-base-200 px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="min-h-screen bg-base-100">
+      {/* Custom Header */}
+      <header className="flex justify-between items-center p-4">
+      <Link href="/" className="text-accent text-4xl font-bold flex items-center space-x-2">
+        <Dumbbell className='w-8 h-8' />
+        <span>Workout Web App</span>
+      </Link>
+      <div className="flex items-center space-x-4 text-accent text-lg ms-20 me-auto brightness-75">
+      <Link href="/about">
+        <span>About</span>
+      </Link>
+      <Link href="/meal-plan">
+        <span>Meal Planner</span>
+      </Link>
+      </div>
+      <div className="flex items-center space-x-4">
+        {!authUser ? (
+          <div className='flex items-center space-x-2'>
+          <Link href="/auth">
+            <div className="p-4 bg-primary text-primary-content rounded-full">
+              Join The Buzz Word
+            </div>
+          </Link>
+          <Link href="/auth">
+            <div className="p-4 bg-primary text-primary-content rounded-full">
+              <MoveUpRight className="w-8 h-8" />
+            </div>
+          </Link>
+          </div>
+        ) : (
+          <button
+            className="p-2 bg-secondary text-secondary-content rounded"
+            onClick={() => {
+              logout();
+              console.log("Logging out...");
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            Logout
+          </button>
+        )}
+      </div>
+    </header>
+      {/* Main Content Grid */}
+      <div className="max-w-7xl mx-auto p-8 grid grid-cols-2 gap-6">
+        {/* Hero Section */}
+        <div className="bg-primary text-primary-content p-8 rounded-2xl shadow-sm">
+          <div className="flex items-center space-x-2 mb-4">
+            <Activity className="h-5 w-5" />
+            <span className="text-sm font-semibold">FITNESS TRACKER — 2024</span>
+          </div>
+          <h1 className="text-5xl font-bold leading-tight mb-6">
+            TRACK YOUR<br />PROGRESS,<br />ACHIEVE MORE
+          </h1>
+          <Link href="/" className="btn btn-secondary ghost">
+            START YOUR JOURNEY
+          </Link>
+          <div className="mt-4 flex items-center space-x-2 text-sm">
+            <Calendar className="h-4 w-4" />
+            <span>PERSONALIZED FITNESS EXPERIENCE</span>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+        {/* Stats Card */}
+        <div className="bg-gradient-to-br from-primary to-secondary p-8 rounded-2xl text-secondary-content flex flex-col justify-end">
+          <h2 className="text-2xl font-bold mb-2">TRAIN ON YOUR SCHEDULE</h2>
+          <p className="">Flexible workout plans that adapt to your lifestyle</p>
+        </div>
+
+        {/* Support Section */}
+        <Link href="/" className="bg-accent p-6 rounded-2xl shadow-lg flex items-center space-x-4 text-accent-content hover:bg-accent-focus transition duration-300 ease-in-out transform hover:scale-105">
+          <CookingPot className="w-16 h-16"/>
+          <div>
+            <p className="text-sm font-medium">Meal Plan Generation</p>
+            <h3 className="text-xl font-bold">MINIMAL COST, MAXIMAL FIT</h3>
+          </div>
+        </Link>
+
+        {/* Ratings & Features */}
+        <div className="bg-primary text-primary-content p-6 rounded-2xl shadow-sm">
+          <div className="flex items-center space-x-2 mb-4">
+            <span className="text-4xl font-bold">Another Feature</span>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {['Meal Planning', 'Workout Tracking', 'Progress Stats'].map((feature) => (
+              <span key={feature} className="px-4 py-2 bg-secondary text-secondary-content rounded-full text-sm">
+                {feature}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="bg-base-300 p-4 text-center fixed bottom-0 w-full">
+        <select data-choose-theme className="p-2 rounded text-primary absolute bottom-[50%] right-2 translate-y-[50%]">
+          <option value="light">Light Mode</option>
+          <option value="dark">Dark Mode</option>
+          <option value="cupcake">Cupcake</option>
+          <option value="bumblebee">Bumblebee</option>
+          <option value="emerald">Emerald</option>
+          <option value="corporate">Corporate</option>
+          <option value="synthwave">Synthwave</option>
+          <option value="retro">Retro</option>
+          <option value="cyberpunk">Cyberpunk</option>
+          <option value="valentine">Valentine</option>
+          <option value="halloween">Halloween</option>
+          <option value="garden">Garden</option>
+          <option value="forest">Forest</option>
+          <option value="aqua">Aqua</option>
+          <option value="lofi">Lofi</option>
+          <option value="pastel">Pastel</option>
+          <option value="fantasy">Fantasy</option>
+          <option value="wireframe">Wireframe</option>
+          <option value="black">Black</option>
+          <option value="luxury">Luxury</option>
+          <option value="dracula">Dracula</option>
+          <option value="cmyk">CMYK</option>
+          <option value="autumn">Autumn</option>
+          <option value="business">Business</option>
+          <option value="acid">Acid</option>
+          <option value="lemonade">Lemonade</option>
+          <option value="night">Night</option>
+          <option value="coffee">Coffee</option>
+          <option value="winter">Winter</option>
+          <option value="dim">Dim</option>
+          <option value="nord">Nord</option>
+          <option value="sunset">Sunset</option>
+          <option value="">System Default</option>
+        </select>
+        <p className="text-sm text-gray-600">
+          2024 Workout Web App.
+        </p>
       </footer>
     </div>
   );
-}
+};
+
+export default Homepage;

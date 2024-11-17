@@ -5,10 +5,11 @@ import Link from "next/link";
 import { themeChange } from "theme-change";
 import { useAuth } from "@/lib/authContext";
 import { useRouter } from "next/router";
+import { Dumbbell } from "lucide-react";
 
 const Header = () => {
   const { authUser, loading, logout } = useAuth();
-//   const router = useRouter();
+  //   const router = useRouter();
 
   useEffect(() => {
     // if (!authUser) router.push("/");
@@ -19,12 +20,13 @@ const Header = () => {
 
   return (
     <header className="flex justify-between items-center p-4 bg-base-300 dark:bg-base-800">
-    <Link href="/">
-      <h1 className="text-xl font-bold text-primary">My App</h1>
-    </Link>
-    <h2>
+      <Link href="/" className="text-primary text-xl font-bold flex items-center space-x-2">
+        <Dumbbell />
+        <span>Workout Web App</span>
+      </Link>
+      <h2 className="text-primary">
         {loading ? "Loading..." : authUser ? `Welcome, ${authUser.email}` : ""}
-    </h2>
+      </h2>
       <div className="flex items-center space-x-4">
         <select data-choose-theme className="p-2 rounded text-primary">
           <option value="light">Light Mode</option>
@@ -71,7 +73,7 @@ const Header = () => {
           <button
             className="p-2 bg-secondary text-secondary-content rounded"
             onClick={() => {
-                logout();
+              logout();
               console.log("Logging out...");
             }}
           >
